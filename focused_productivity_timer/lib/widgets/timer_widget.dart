@@ -48,9 +48,22 @@ class _TimerWidgetState extends State<TimerWidget> with SingleTickerProviderStat
         AnimatedBuilder(
           animation: _controller,
           builder: (context, child) {
-            return Text(
-              '${(_duration - _controller.value * _duration) ~/ 60}:${(_duration - _controller.value * _duration) % 60}',
-              style: TextStyle(fontSize: 48),
+            return Container(
+              width: 200,
+              height: 200,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                border: Border.all(
+                  color: Colors.blue,
+                  width: 10,
+                ),
+              ),
+              child: Center(
+                child: Text(
+                  '${((_duration - _controller.value * _duration) ~/ 60).toString().padLeft(2, '0')}:${((_duration - _controller.value * _duration) % 60).toString().padLeft(2, '0')}',
+                  style: TextStyle(fontSize: 48, fontWeight: FontWeight.bold),
+                ),
+              ),
             );
           },
         ),
